@@ -22,3 +22,9 @@
   float: right;
   position: absolute;
   right: 10px; }
+#app {
+	margin-top: 80px;
+}
+.well {
+	margin-top: 80px;
+}

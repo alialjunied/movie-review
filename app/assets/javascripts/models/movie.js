@@ -14,4 +14,3 @@
 			console.log(movie.get("title"));
 		}
 	});
-	console.log("asda");

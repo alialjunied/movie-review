@@ -5,5 +5,3 @@ window.MovieReview =
   Routers: {}
   initialize: -> alert 'Hello from Backbone!'
 
-$(document).ready ->
-  MovieReview.initialize()

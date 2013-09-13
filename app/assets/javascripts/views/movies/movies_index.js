@@ -21,6 +21,7 @@
 		},
 		showMovie : function(){
 			//TODO: show movie detials
+			$(".movies").html("<h1>sadd</h1>");
 		},
 		render: function( ){ //how to insert into <ul> tag
 			return $(this.el).text( this.model.get('title') ); //pass in model in new MovieView({ model : model}), we have access to this.model
