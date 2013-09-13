@@ -1,4 +1,4 @@
-/backbone to model client-side
+//backbone to model client-side
 	//MODEL
 	Movie = Backbone.Model.extend({ 
 		url : function(){
@@ -14,3 +14,4 @@
 			console.log(movie.get("title"));
 		}
 	});
+	console.log("asda");
