@@ -46,7 +46,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="/">MoviesApp</a>
+                <%= link_to "MoviesApp", root_url, class: "brand" %>
+                
+
                 <div class="container nav-collapse">
                     <ul class="nav pull-right">     
                         <li><%= token = session['token']
@@ -66,10 +68,46 @@
             <%= yield %>    
         </div>        
     </div>
+          
+<script type="text/template" id="single-movie-template">
+    <div class="single-movie">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
 
+                    <img src={{= model.img_url }} class="img-circle">
+                    
+                </div>
+                <div class="span6">
+                    <h1>{{= model.title }}</h1>
+                    <p>{{= model.summary }}</p>
+                </div>  
+            </div>
+            {{= console.log(movie.reviews) }}
+            {{ _.each(model.reviews.toJSON(), function(review) { }}
+            <div class="well comment">
+                <div class="row-fluid">
+                    <p class="span12">
+                    <b>{{= review.user.username }}</b>
+                        <span class="label label-success pull-right">
+                            <icon class="icon-ok">
+                            </icon>{{= review.score }} points
+                        </span>
+                    </p>
+                </div>
+
+                <div class="row-fluid">
+                    <p class="span12">{{= review.comment }}</p>
+                </div>
+            </div>
+             {{ }); }}
+        </div>
+    </div>
+    </script>
     <footer style="text-align: center">
         <p>&copy; Merb 2013</p>
     </footer>
 
   </body>
+
 </html>

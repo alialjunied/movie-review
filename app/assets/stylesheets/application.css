@@ -11,6 +11,16 @@
  *= require_self
  *= require_tree .
  */
+ .movie-title {
+  font-size: 1.2em !important;
+}
+.single-movie {
+  margin-top: 100px;
+}
+div.span3 {
+  
+  float: left;
+}
 #app ul.movies li {
     position: relative;
     padding: 0.5em;

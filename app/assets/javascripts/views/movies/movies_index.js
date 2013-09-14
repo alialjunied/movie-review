@@ -1,9 +1,8 @@
-$(function() {
-	_.templateSettings = {
-		interpolate: /\{\{=(.+?)\}\}/g,
-		escape: /\{\{-(.+?)\}\}/g,
-		evaluate: /\{\{(.+?)\}\}/g,
-	};
+    _.templateSettings = {
+    	interpolate: /\{\{=(.+?)\}\}/g,
+    	escape: /\{\{-(.+?)\}\}/g,
+    	evaluate: /\{\{(.+?)\}\}/g,
+    };
 
 	var MoviesView = Backbone.View.extend({
 		el : ".movies", //the DOM Element class 'movies'
@@ -11,69 +10,62 @@ $(function() {
 			
 			view = new MovieView({ model : model }); //create a MovieView object specifying the model
 
-			e1 = view.render()
-			var img = $('<img/>').attr({ 'src' : model.get('img_url') })
-			$(e1).append(img);
+			e1 = view.render();
+			//var img = $('<img/>').attr({ 'src' : model.get('img_url') })
+			//$(e1).append(img);
 
-			$('ul.movies').append(e1);
+			$('div.movies').append(e1);
 		}
 	});
 	//----------
 	//VIEW
 
 	var MovieView = Backbone.View.extend({
-
-		tagName: "li", //insert into <ul> tag
-	
+		tagName: "div", //insert into <ul> tag
 		events : {
 			"click" : "showMovie"
 		},
 		showMovie : function(){
 			//TODO: show movie detials
-			//$(".movies").html("<h1>sadd</h1>");
-			movie = new Movie();
-			//var id = this.id;
-			//console.log(movie.get("id"));
-			//var id = this.model.get("id");
-	
-      		var view = new SingleMovieView({model: this.model});
+			
+			var id = this.model.id;
+			var movie = new Movie({id: id});
+			movie.url = "http://cs3213.herokuapp.com/movies/"+id+".json"
 
+			movie.fetch({
+				success : function(thisMovie){
+					thisMovie.reviews.fetch({
+						success: function(thisMovieReviews) {
+							thisMovie.set("reviews", thisMovieReviews);
+							var view = new SingleMovieView({model: movie});
+
+							//console.log(movie);
+							view.render();
+		     			return this;
+
+							}
+						});
+				}
 			//var template = _.template($('#single-movie-template').html(), {model: this.model.toJSON()});
-      		view.render();
-     		return this;	
+		});
 		},
 		render: function(){ //how to insert into <ul> tag
 			$(this.el).attr("id",this.model.id);
+			console.log(this.model);
 			$(this.el).attr("class","test");
-			return $(this.el).text( this.model.get('title') ); //pass in model in new MovieView({ model : model}), we have access to this.model
-			
+			//return $(this.el).text( this.model.get('title') ); //pass in model in new MovieView({ model : model}), we have access to this.model
+			return $(this.el).html(
+				"<div class='span3 movie'><h3 class='movie-title'><a href='/movies/"+ this.model.id +"'>"+ this.model.get("title") +"</a></h3><a href='/movies/"+ this.model.id +"'><img alt='A' src='"+ this.model.get("img_url") +"'></a></div>" );
 		}
 	});
 
-	 var SingleMovieView = Backbone.View.extend({        
+	var SingleMovieView = Backbone.View.extend({        
  		el: "#single-movie-template",
-			//template: _.template($("#single-movie-template").html()),
-        render: function () {
-        		console.log(this.model.get("title"));
-        		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
-            $('.movies').html(template);
-            //$("#app").html(template);
-            return this;
-        }
-    });
-	 	
-
-	var movies = new Movies( );
-
-	//pull (fetch) the data
-	movies.fetch({
-
-		//upon success, run anoymous function
-		success : function( ){
-			movies_view = new MoviesView({ }) //create collection view
-			_.each(movies.models, function(model){ //for each movie model in the collection, pass in that model
-				movies_view.addOne(model); //execute addOne method
-			});
-		}
-	});
-	});	
+		//template: _.template($("#single-movie-template").html()),
+    render: function () {
+				var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+    	 	$('.testa').html(template);
+        //$("#app").html(template);
+        return this;
+    }
+  });
