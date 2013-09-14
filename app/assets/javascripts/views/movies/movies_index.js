@@ -60,16 +60,3 @@
             return this;
         }
     });
-	 	var movies = new Movies( );
-
-	//pull (fetch) the data
-		movies.fetch({
-
-		//upon success, run anoymous function
-		success : function( ){
-			movies_view = new MoviesView({ }) //create collection view
-			_.each(movies.models, function(model){ //for each movie model in the collection, pass in that model
-				movies_view.addOne(model); //execute addOne method
-			});
-		}
-	});
