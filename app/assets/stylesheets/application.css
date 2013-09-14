@@ -12,19 +12,24 @@
  *= require_tree .
  */
 #app ul.movies li {
-  position: relative;
-  padding: 0.5em;
-  font-size: 25px;
-  colour: black;
-  border-bottom: 1px solid #ccc; }
+    position: relative;
+    padding: 0.5em;
+    font-size: 25px;
+    colour: black;
+    border-bottom: 1px solid #ccc; 
+}
+
 #app ul.movies img {
-  height: 30px;
-  float: right;
-  position: absolute;
-  right: 10px; }
-#app {
+    height: 30px;
+    float: right;
+    position: absolute;
+    right: 10px; 
+}
+
+#content {
 	margin-top: 80px;
 }
+
 .well {
 	margin-top: 80px;
 }

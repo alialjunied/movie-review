@@ -48,24 +48,23 @@
                 </a>
                 <a class="brand" href="/">MoviesApp</a>
                 <div class="container nav-collapse">
-                    <form class="navbar-form navbar-right pull-right">
-                            <div class="form-group">
-                                <input type="text" placeholder="Email" class="form-control">
-                                <input type="password" placeholder="Password" class="form-control">
-                                <button type="submit" class="btn btn-success">Sign in</button>
-                            </div>
-                    </form>
-                </div><!--/.nav-collapse -->
+                    <ul class="nav pull-right">     
+                        <li><%= token = session['token']
+                                if token == nil 
+                                    link_to"Sign in", :action => "sign_in"
+                                else
+                                    link_to"Sign out", :action => "sign_out"
+                                end %></li>
+                    </ul>                        
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="container">
-        <div class="row">
-          <div class="span9">
-                <%= yield %>    
-            </div>
-        </div><!--/row-->
+    <div id="content" class="container">
+        <div class="span9">
+            <%= yield %>    
+        </div>        
     </div>
 
     <footer style="text-align: center">

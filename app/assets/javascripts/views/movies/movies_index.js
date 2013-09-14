@@ -1,9 +1,10 @@
-	$(function() {
-    _.templateSettings = {
-    	interpolate: /\{\{=(.+?)\}\}/g,
-    	escape: /\{\{-(.+?)\}\}/g,
-    	evaluate: /\{\{(.+?)\}\}/g,
-    };
+$(function() {
+	_.templateSettings = {
+		interpolate: /\{\{=(.+?)\}\}/g,
+		escape: /\{\{-(.+?)\}\}/g,
+		evaluate: /\{\{(.+?)\}\}/g,
+	};
+
 	var MoviesView = Backbone.View.extend({
 		el : ".movies", //the DOM Element class 'movies'
 		addOne : function(model){ //function called addOne takes in a model
@@ -35,12 +36,11 @@
 			//console.log(movie.get("id"));
 			//var id = this.model.get("id");
 	
-      var view = new SingleMovieView({model: this.model});
+      		var view = new SingleMovieView({model: this.model});
 
 			//var template = _.template($('#single-movie-template').html(), {model: this.model.toJSON()});
-      view.render();
-     	return this;	
-
+      		view.render();
+     		return this;	
 		},
 		render: function(){ //how to insert into <ul> tag
 			$(this.el).attr("id",this.model.id);
@@ -51,8 +51,8 @@
 	});
 
 	 var SingleMovieView = Backbone.View.extend({        
- 	el: "#single-movie-template",
-		//template: _.template($("#single-movie-template").html()),
+ 		el: "#single-movie-template",
+			//template: _.template($("#single-movie-template").html()),
         render: function () {
         		console.log(this.model.get("title"));
         		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
@@ -61,7 +61,9 @@
             return this;
         }
     });
-	 	var movies = new Movies( );
+	 	
+
+	var movies = new Movies( );
 
 	//pull (fetch) the data
 	movies.fetch({
