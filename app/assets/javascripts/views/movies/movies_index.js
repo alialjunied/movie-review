@@ -56,7 +56,7 @@
         render: function () {
         		console.log(this.model.get("title"));
         		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
-            $('.movies').html(template);
+            $('#app').html(template);
             //$("#app").html(template);
             return this;
         }
@@ -64,7 +64,7 @@
 	 	var movies = new Movies( );
 
 	//pull (fetch) the data
-	movies.fetch({
+		movies.fetch({
 
 		//upon success, run anoymous function
 		success : function( ){
