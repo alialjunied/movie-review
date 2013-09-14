@@ -1,9 +1,9 @@
-	$(function() {
     _.templateSettings = {
     	interpolate: /\{\{=(.+?)\}\}/g,
     	escape: /\{\{-(.+?)\}\}/g,
     	evaluate: /\{\{(.+?)\}\}/g,
     };
+
 	var MoviesView = Backbone.View.extend({
 		el : ".movies", //the DOM Element class 'movies'
 		addOne : function(model){ //function called addOne takes in a model
@@ -73,4 +73,3 @@
 			});
 		}
 	});
-	});	
