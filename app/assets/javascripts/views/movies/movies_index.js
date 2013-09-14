@@ -1,9 +1,9 @@
-	$(function() {
     _.templateSettings = {
     	interpolate: /\{\{=(.+?)\}\}/g,
     	escape: /\{\{-(.+?)\}\}/g,
     	evaluate: /\{\{(.+?)\}\}/g,
     };
+
 	var MoviesView = Backbone.View.extend({
 		el : ".movies", //the DOM Element class 'movies'
 		addOne : function(model){ //function called addOne takes in a model
@@ -23,7 +23,6 @@
 	var MovieView = Backbone.View.extend({
 
 		tagName: "li", //insert into <ul> tag
-	
 		events : {
 			"click" : "showMovie"
 		},
@@ -35,11 +34,11 @@
 			//console.log(movie.get("id"));
 			//var id = this.model.get("id");
 	
-      var view = new SingleMovieView({model: this.model});
+      		var view = new SingleMovieView({model: this.model});
 
 			//var template = _.template($('#single-movie-template').html(), {model: this.model.toJSON()});
-      view.render();
-     	return this;	
+      		view.render();
+     		return this;	
 
 		},
 		render: function(){ //how to insert into <ul> tag
@@ -74,4 +73,3 @@
 			});
 		}
 	});
-	});	
