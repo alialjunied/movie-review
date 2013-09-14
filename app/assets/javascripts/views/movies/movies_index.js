@@ -1,3 +1,9 @@
+	$(function() {
+    _.templateSettings = {
+    	interpolate: /\{\{=(.+?)\}\}/g,
+    	escape: /\{\{-(.+?)\}\}/g,
+    	evaluate: /\{\{(.+?)\}\}/g,
+    };
 	var MoviesView = Backbone.View.extend({
 		el : ".movies", //the DOM Element class 'movies'
 		addOne : function(model){ //function called addOne takes in a model
@@ -15,17 +21,56 @@
 	//VIEW
 
 	var MovieView = Backbone.View.extend({
+
 		tagName: "li", //insert into <ul> tag
-		//template: 'movies/edit'
 		events : {
 			"click" : "showMovie"
 		},
 		showMovie : function(){
 			//TODO: show movie detials
-			var movieTemplate = _.template( $('#movieTemplate').html(), {'title': this.model.get('title') } )
-			$(".movies").html(movieTemplate);
+			//$(".movies").html("<h1>sadd</h1>");
+			movie = new Movie();
+			//var id = this.id;
+			//console.log(movie.get("id"));
+			//var id = this.model.get("id");
+	
+      		var view = new SingleMovieView({model: this.model});
+
+			//var template = _.template($('#single-movie-template').html(), {model: this.model.toJSON()});
+      		view.render();
+     		return this;	
+
 		},
-		render: function( ){ //how to insert into <ul> tag
+		render: function(){ //how to insert into <ul> tag
+			$(this.el).attr("id",this.model.id);
+			$(this.el).attr("class","test");
 			return $(this.el).text( this.model.get('title') ); //pass in model in new MovieView({ model : model}), we have access to this.model
+			
 		}
 	});
+
+	 var SingleMovieView = Backbone.View.extend({        
+ 	el: "#single-movie-template",
+		//template: _.template($("#single-movie-template").html()),
+        render: function () {
+        		console.log(this.model.get("title"));
+        		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+            $('.movies').html(template);
+            //$("#app").html(template);
+            return this;
+        }
+    });
+	 	var movies = new Movies( );
+
+	//pull (fetch) the data
+	movies.fetch({
+
+		//upon success, run anoymous function
+		success : function( ){
+			movies_view = new MoviesView({ }) //create collection view
+			_.each(movies.models, function(model){ //for each movie model in the collection, pass in that model
+				movies_view.addOne(model); //execute addOne method
+			});
+		}
+	});
+	});	
