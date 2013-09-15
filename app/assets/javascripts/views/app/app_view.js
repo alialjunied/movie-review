@@ -19,22 +19,25 @@ var AppView = Backbone.View.extend({
                         _.each(movies.models, function(model){ //for each movie model in the collection, pass in that model
                               movies_view.addOne(model); //execute addOne method
                         });
+
+                      //get previous and next page numbers from current page number
+                      var prev_page_num = parseInt(pageNum) - 1;
+                      if (prev_page_num < 1){
+                          prev_page_num = 1;
+                      }
+                      var next_page_num = parseInt(pageNum) + 1;
+
+                      //set the html elements
+                      $('#prevPage').attr("href", "/#page/"+prev_page_num);
+                      $('#nextPage').attr("href", "/#page/"+next_page_num);
+
                   },
 
                   error: function(error){
                       console.log(error);
                   }
             });
-            //get previous and next page numbers from current page number
-            var prev_page_num = parseInt(pageNum) - 1;
-            if (prev_page_num < 1){
-                  prev_page_num = 1;
-            }
-            var next_page_num = parseInt(pageNum) + 1;
 
-            //set the html elements
-            $('#prevPage').attr("href", "/#page/"+prev_page_num);
-            $('#nextPage').attr("href", "/#page/"+next_page_num);
 	},
 
 	showSingleMovieView: function(movie_id){
@@ -79,6 +82,6 @@ var AppView = Backbone.View.extend({
                         });
                   }
             });
-      },
+      }
 });
       

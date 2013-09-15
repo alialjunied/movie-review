@@ -19,6 +19,7 @@ var AppRouter = Backbone.Router.extend({
         },
 
       index: function() {
+          console.log('go to index');
             AppViewInst.showPage(1);
       },
 
