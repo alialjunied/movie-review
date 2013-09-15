@@ -67,7 +67,7 @@
                 <div class="span6">
                     <h1>{{= model.title }}</h1>
                     <p>{{= model.summary }}</p>
-                    <button id="update-movie-btn" type="button" class="btn btn-success" >Update</button>
+                    <button id="update_movie_btn" class="btn btn-success" >Update</button>
                     <button id="delete-movie-btn" type="button" class="btn btn-danger" >Delete</button>
                 </div>  
             </div>
@@ -175,8 +175,8 @@
                         </div>
                     </div>
                 
-                    <a id="update-btn" href={{="/#edit_movie/"+model.id}}>Update</a>
-                    <a id="cancel-btn" href={{="/#movies/"+model.id}}>Cancel</a>
+                    <a id="update-btn" class="btn btn-success">Update</a>
+                    <a id="cancel-update-btn" class="btn btn-danger">Cancel</a>
                 </form>
                 <div class="span4">
                     <img src={{= model.img_url }} class="img-circle" id="single-movie-img"> 
