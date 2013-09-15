@@ -16,6 +16,7 @@ var AppRouter = Backbone.Router.extend({
             "review/create/:movie_id"       : "create_review",
 
             "logout"           : "logout",
+
         },
 
       index: function() {
@@ -26,6 +27,11 @@ var AppRouter = Backbone.Router.extend({
       show_Single_Movie : function (movie_id){
             AppViewInst.showSingleMovieView(movie_id);
       },
+
+
+      new_movie: function() {
+          AppViewInst.createMovieView();
+      }
 
 });
 
