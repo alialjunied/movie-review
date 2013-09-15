@@ -13,12 +13,18 @@
  */
  .movie-title {
   font-size: 1.2em !important;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+  width: 70%;
 }
+
 .single-movie {
   margin-top: 100px;
 }
 div.movie-view {
-  
+  max-width: 270px;
   float: left;
   padding-left: 10px;
 }
