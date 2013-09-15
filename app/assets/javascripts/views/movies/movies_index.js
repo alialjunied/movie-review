@@ -185,6 +185,8 @@ var UpdateMovieView = Backbone.View.extend({
 		var template = _.template($("#update-movie-template").html(), {model: this.model.attributes});
 		$('.testa').html(template);
 
+
+
 		var token = getCookie('token');
 		console.log(token);
 		if (token == "" || token == null) {
@@ -194,6 +196,12 @@ var UpdateMovieView = Backbone.View.extend({
  		$('#update_title').val(this.model.attributes.title);
  		$('#update_summary').val(this.model.attributes.summary);
  		var id = this.model.id;
+
+        $('#cancel-update-btn').click(function(){
+            window.location.href = "/#movies/" + id;
+
+        });
+
 
  		$("#update-btn").click(function(){
 
