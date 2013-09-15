@@ -9,17 +9,13 @@ var AppRouter = Backbone.Router.extend({
             "movies/:id"       : "show_Single_Movie",
             
             //Actions to Movies
-            "movie/update/:id" : "update_movie",
-            "movie/delete/:id" : "delete_movie",
+            //"delete_movie/:id"    : "delete_movie", 
             "new_movie"        : "new_movie",
+            "edit_movie/:id"        : "update_movie",
             "movie/:mid/review/delete/:rid" : "delete_review",
             "review/create/:movie_id"       : "create_review",
 
-            "logout"           : "logout",
-
         },
-
-
 
       index: function() {
             AppViewInst.showPage(1);
@@ -27,15 +23,16 @@ var AppRouter = Backbone.Router.extend({
 
 
       show_Single_Movie : function (movie_id){
-            //get movie info from API Server
-
             AppViewInst.showSingleMovieView(movie_id);
       },
 
 
       new_movie: function() {
-          AppViewInst.createMovieView();
-      }
+            AppViewInst.createMovieView();
+      },
 
+      update_movie: function(movie_id) {
+            AppViewInst.updateMovieView(movie_id);
+      },
 });
 

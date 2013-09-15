@@ -41,8 +41,22 @@ var AppView = Backbone.View.extend({
             view.render();
 	},
 
-	updateMovieView: function(){
+      updateMovieView: function(movie_id){
+            var movie = new Movie({id: movie_id});
+            movie.url = "http://cs3213.herokuapp.com/movies/"+movie_id+".json"
 
-	},
+            movie.fetch({
+                  success : function(thisMovie){
+                        thisMovie.reviews.fetch({
+                              success: function(thisMovieReviews) {
+                                    thisMovie.set("reviews", thisMovieReviews);
+                                    var view = new UpdateMovieView({model: movie});
+                                    view.render();
+                                    return this;
+                              }
+                        });
+                  }
+            });
+      },
 });
       

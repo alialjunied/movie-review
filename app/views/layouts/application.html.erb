@@ -14,27 +14,8 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
     <%= javascript_include_tag "application" %>
+
   </head>
   <body>
 
@@ -48,21 +29,28 @@
                 </a>
                 <%= link_to "MoviesApp", root_url, class: "brand" %>
                 
-
                 <div class="container nav-collapse">
                     <ul class="nav pull-right">     
-                        <li><%= token = cookies['token']
-                                if token == nil 
+                        <li><%= if cookies['token'] == nil
                                     link_to"Sign in", :action => "sign_in"
+                                 #   redirect_to 'http://google.com'
                                 else
                                     link_to"Sign out", :action => "sign_out"
-                                end %></li>
+                                end 
+                                #if cookies['token'] == nil
+
+                                %></li>
                     </ul>                        
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <div id="pagination" class="row-fluid">
+        <a id="prevLink">Prev</a>
+        <a id="nextLink">Next</a>
+    </div>
+
     <div id="content" class="container">
         <div class="span9 testa">
             <%= yield %>    
@@ -74,13 +62,13 @@
         <div class="container">
             <div class="row">
                 <div class="span4">
-
-                    <img src={{= model.img_url }} class="img-circle">
-                    
+                    <img src={{= model.img_url }} class="img-circle" id="single-movie-img"> 
                 </div>
                 <div class="span6">
                     <h1>{{= model.title }}</h1>
                     <p>{{= model.summary }}</p>
+                    <button id="update-movie-btn" type="button" class="btn btn-success" >Update</button>
+                    <button id="delete-movie-btn" type="button" class="btn btn-danger" >Delete</button>
                 </div>  
             </div>
             {{= console.log(model.reviews) }}
@@ -111,51 +99,95 @@
                     <label class="span3" for="review_comment">Comment</label>
                     <textarea class="span9" cols="40" id="review_comment" name="review[comment]" rows="3"></textarea>
                 </div>
+                <input name="commit" id="submit" type="submit" value="Create Review">
 
             </div>
 
         </div>
     </div>
     </script>
-
-    <script type="text/template" id="add-movie-template">
-
-        <div><h3>Create new movie</h3>
-
-        <form enctype="multipart/form-data" id="new_movie_form" name="movie" method="POST" >
-
-          <div class="control-group">
-            <label class="control-label" for="movie_title">Title</label>
-            <div class="controls">
-              <input class="text_field" id="movie_title" name="movie[Title]" size="30" type="text" required="true">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="movie_summary">Summary</label>
-            <div class="controls">
-              <input class="text_field" id="movie_summary" name="movie[Summary]" size="30" type="text" required="true">
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="movie_img">Img</label>
-            <div class="controls">
-              <input id="movie_img" name="movie[Image]" type="file" required="true">
-            </div>
-          </div>
-
-          <a class="btn btn-primary" id="submit-btn">Create Movie</a>
-          <a href="/" id="cancel" class="btn">Cancel</a>
-        </form>
+    <script type="text/template" id="movie-template">
+        <div class='movie-view' id={{= model.id}}>
+            <h3 class='movie-title'>
+                {{=model.title}}
+            </h3>
+            <img alt='A' src={{= model.img_url }} class="img-circle">
         </div>
-
     </script>
 
+
+    <script type="text/template" id="add-movie-template">
+        <div>
+            <h3>Create new movie</h3>
+
+            <form enctype="multipart/form-data" id="new_movie_form" name="movie" method="POST" >
+
+                <div class="control-group">
+                    <label class="control-label" for="movie_title">Title</label>
+                    <div class="controls">
+                    <input class="text_field" id="movie_title" name="movie[title]" size="30" type="text" required="true">
+                    </div>
+                </div>
+              
+                <div class="control-group">
+                    <label class="control-label" for="movie_summary">Summary</label>
+                    <div class="controls">
+                    <input class="text_field" id="movie_summary" name="movie[summary]" size="30" type="text" required="true">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="movie_img">Image</label>
+                    <div class="controls">
+                    <input id="movie_img" name="movie[img]" type="file" required="true">
+                    </div>
+                </div>
+
+                <a class="btn btn-primary" id="submit-btn">Create Movie</a>
+                <a href="/" id="cancel" class="btn">Cancel</a>
+            </form>
+        </div>
+    </script>
+
+    <script type="text/template" id="update-movie-template">
+        <div class="container">
+            <h3>Edit</h3>
+            <div class="row">
+                <form class="span4" enctype="multipart/form-data" id="update_movie_form" name="movie" method="POST" >
+                    <div class="control-group">
+                        <label class="control-label" for="movie_title">Title</label>
+                        <div class="controls">
+                        <input id="update_title" class="text_field" size=50 name="movie[title]" type="text" required="true" value={{= model.title }}>
+                        </div>
+                    </div>
+                
+                    <div class="control-group">
+                        <label class="control-label" for="movie_summary">Summary</label>
+                        <div class="controls">
+                        <input id="update_summary" class="text_field" size=500 name="movie[summary]" type="text" required="true" value={{= model.title}}>
+                        </div>
+                    </div>
+    
+                    <div class="control-group">
+                        <label class="control-label" for="movie_img">Image</label>
+                        <div class="controls">
+                            <input name="movie[img]" type="file">
+                        </div>
+                    </div>
+                
+                    <a id="update-btn" href={{="/#edit_movie/"+model.id}}>Update</a>
+                    <a id="cancel-btn" href={{="/#movies/"+model.id}}>Cancel</a>
+                </form>
+                <div class="span4">
+                    <img src={{= model.img_url }} class="img-circle" id="single-movie-img"> 
+                </div>
+            </div>
+        </div>
+    </script>
 
     <footer style="text-align: center">
         <p>&copy; Merb 2013</p>
     </footer>
 
   </body>
-
 </html>
