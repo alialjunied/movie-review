@@ -19,16 +19,12 @@ var AppRouter = Backbone.Router.extend({
 
         },
 
-
-
       index: function() {
             AppViewInst.showPage(1);
       },
 
 
       show_Single_Movie : function (movie_id){
-            //get movie info from API Server
-
             AppViewInst.showSingleMovieView(movie_id);
       },
 

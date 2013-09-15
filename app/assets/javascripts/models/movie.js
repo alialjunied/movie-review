@@ -3,9 +3,6 @@
 
 	});
 
-	var ReviewList = Backbone.Collection.extend({
-		model: Review
-	});
 
 	var Movie = Backbone.Model.extend({ 
 		url : function(){

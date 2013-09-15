@@ -4,7 +4,6 @@ var AppView = Backbone.View.extend({
 	//el: set element of main div changing
 
 	showPage: function(pageNum){
-            console.log("showpage");
             movies.fetch({
 
             //upon success, run function

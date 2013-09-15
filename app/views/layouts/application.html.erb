@@ -14,27 +14,8 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
     <%= javascript_include_tag "application" %>
+
   </head>
   <body>
 
@@ -48,7 +29,6 @@
                 </a>
                 <%= link_to "MoviesApp", root_url, class: "brand" %>
                 
-
                 <div class="container nav-collapse">
                     <ul class="nav pull-right">     
                         <li><%= token = cookies['token']
@@ -62,7 +42,12 @@
             </div>
         </div>
     </div>
-    
+
+    <div id="pagination" class="row-fluid">
+        <a id="prevLink">Prev</a>
+        <a id="nextLink">Next</a>
+    </div>
+
     <div id="content" class="container">
         <div class="span9 testa">
             <%= yield %>    
@@ -83,15 +68,25 @@
                     <p>{{= model.summary }}</p>
                 </div>  
             </div>
-            {{= console.log(model.reviews) }}
+          
             {{ _.each(model.reviews.toJSON(), function(review) { }}
             <div class="well comment">
                 <div class="row-fluid">
                     <p class="span12">
+                           
                     <b>{{= review.user.username }}</b>
+
                         <span class="label label-success pull-right">
                             <icon class="icon-ok">
                             </icon>{{= review.score }} points
+
+                        </span>
+                        </br>
+                        </br>
+
+                        <span class="icon-remove label label-success pull-right"
+                            <icon review_id={{= review.id }} movie_id={{= review.movie_id }}>
+                            </icon>Remove
                         </span>
                     </p>
                 </div>
@@ -118,6 +113,41 @@
         </div>
     </div>
     </script>
+    <script type="text/template" id="review-template">
+    {{ _.each(model.toJSON(), function(review) { }}
+       <div class="well comment">
+            <div class="row-fluid">
+                <p class="span12">
+                    <b>{{= review.user.username }}</b>
+                        <span class="icon-remove label label-success pull-right"
+                            <icon review_id={{= review.id }} movie_id={{= review.movie_id }}>
+                            </icon>Remove
+                        </span>
+                        </br>
+                        </br>
+                        <span class="label label-success pull-right"
+                             <icon class="icon-remove" review_id={{= review.id }} movie_id={{= review.movie_id }}>
+                            </icon>Remove
+                        </span>
+        {{console.log(model.id)}}
+
+                </p>
+            </div>
+
+            <div class="row-fluid">
+                <p class="span12">{{= review.comment }}</p>
+            </div>
+        </div>
+    {{ }); }}
+    </script>
+<script type="text/template" id="movie-template">
+    <div class='movie-view' id={{= model.id}}>
+        <h3 class='movie-title'>
+            {{=model.title}}
+        </h3>
+        <img alt='A' src={{= model.img_url }} class="img-circle">
+    </div>
+</script>
 
     <script type="text/template" id="add-movie-template">
         <div>

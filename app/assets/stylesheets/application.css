@@ -17,9 +17,10 @@
 .single-movie {
   margin-top: 100px;
 }
-div.span3 {
+div.movie-view {
   
   float: left;
+  padding-left: 10px;
 }
 #app ul.movies li {
     position: relative;
