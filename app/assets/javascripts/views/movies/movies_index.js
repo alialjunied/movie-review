@@ -91,22 +91,36 @@ return c_value;
     			img = $('#movie_img').val();
 	
     			if (title == "" || summary == "" || img == "") {
-    		           alert("Please provide complete data!");
+    		        alert("Please provide complete data!");
     		    } else {
-    		           var formData = new FormData($("form[name='movie']")[0]);
-    		           formData.append("access_token", token)
-    		           $.ajax({
-    		               url: "http://cs3213.herokuapp.com/movies.json",
-    		               type: "post",
-    		               data: formData,
-    		               cache: false,
-    		               contentType: false,
-    		               processData: false,
-    		               success: function(data) {
-    		               		console.log("success!");
-    		                   window.location.href = "/#movies/" + data.id;
-    		               }
-    		         }); 
+    		        //var formData = new FormData($("form[name='movie']")[0]);
+    		        var formData = new FormData();
+                    //formData.append('title', title);
+                    //formData.append('summary', summary);
+                    //formData.append('img', img);
+                    formData.append('movie_id', 128);
+                    formData.append('score', 22),
+                    formData.append('comment', 'test')
+                    formData.append("access_token", token);
+
+                    console.log(JSON.stringify(formData));
+                    $.ajax({
+                        //url: "http://cs3213.herokuapp.com/movies.json",
+                        url: 'http://cs3213.herokuapp.com//movies/4/reviews.json',
+                        type: "post",
+                        data: {'movie_id':128, 'score':22, 'comment':'test', 'access_token':token},
+                        headers: {'Access-Control-Allow-Origin' : '*'},
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        error: function(jqXHR, textStatus, error) {
+                            console.log("error");
+                        },
+                        success: function(data) {
+                            console.log("success!");
+                            window.location.href = "/#movies/" + data.id;
+                        }
+    		        });
     		    }
     		});
 
