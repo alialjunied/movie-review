@@ -11,7 +11,7 @@
  *= require_self
  *= require_tree .
  */
- .movie-title {
+.movie-title {
   font-size: 1.2em !important;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -20,9 +20,6 @@
   width: 70%;
 }
 
-.single-movie {
-  margin-top: 100px;
-}
 div.movie-view {
   max-width: 270px;
   float: left;

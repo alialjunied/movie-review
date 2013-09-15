@@ -7,6 +7,7 @@ var AppView = Backbone.View.extend({
             console.log(pageNum);
             $("div.row-movies").empty();
            //movies.url = movies.url + "?" + $.param({page: pageNum});
+
             movies.fetch({
                   //using jquery param method to add param to url
                   data: $.param({page: pageNum}),
@@ -47,7 +48,7 @@ var AppView = Backbone.View.extend({
                               success: function(thisMovieReviews) {
                                     thisMovie.set("reviews", thisMovieReviews);
                                     var view = new SingleMovieView({model: movie});
-                                    view.render();
+                                    view.render(movie.id);
                                     return this;
                               }
                         });
@@ -60,8 +61,22 @@ var AppView = Backbone.View.extend({
             view.render();
 	},
 
-	updateMovieView: function(){
+      updateMovieView: function(movie_id){
+            var movie = new Movie({id: movie_id});
+            movie.url = "http://cs3213.herokuapp.com/movies/"+movie_id+".json"
 
-	},
+            movie.fetch({
+                  success : function(thisMovie){
+                        thisMovie.reviews.fetch({
+                              success: function(thisMovieReviews) {
+                                    thisMovie.set("reviews", thisMovieReviews);
+                                    var view = new UpdateMovieView({model: movie});
+                                    view.render();
+                                    return this;
+                              }
+                        });
+                  }
+            });
+      },
 });
       

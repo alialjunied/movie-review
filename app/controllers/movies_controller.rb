@@ -19,8 +19,11 @@ class MoviesController < ApplicationController
   end
 
   def sign_out
-    cookies['token'] = nil
-  	redirect_to :action => 'index'
+    cookies.delete :token
+    cookies.delete :refresh_token
+    #cookies['token'] = nil
+    redirect_to :action => 'index'
+    #redirect_to 'http://0.0.0.0:3000'
   end
 
   # redirect to movies@3213 to get authentication and code
