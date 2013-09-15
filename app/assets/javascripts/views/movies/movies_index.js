@@ -5,28 +5,24 @@
     };
 
     function getCookie(c_name) {
-var c_value = document.cookie;
-var c_start = c_value.indexOf(" " + c_name + "=");
-if (c_start == -1)
-  {
-  c_start = c_value.indexOf(c_name + "=");
-  }
-if (c_start == -1)
-  {
-  c_value = null;
-  }
-else
-  {
-  c_start = c_value.indexOf("=", c_start) + 1;
-  var c_end = c_value.indexOf(";", c_start);
-  if (c_end == -1)
-  {
-c_end = c_value.length;
-}
-c_value = unescape(c_value.substring(c_start,c_end));
-}
-return c_value;
-}
+		var c_value = document.cookie;
+		var c_start = c_value.indexOf(" " + c_name + "=");
+		if (c_start == -1) {
+		  c_start = c_value.indexOf(c_name + "=");
+		}
+		
+		if (c_start == -1) {
+			c_value = null;
+		} else {
+		  	c_start = c_value.indexOf("=", c_start) + 1;
+		  	var c_end = c_value.indexOf(";", c_start);
+		  	if (c_end == -1) {
+				c_end = c_value.length;
+		 	}
+			c_value = unescape(c_value.substring(c_start,c_end));
+		}
+		return c_value;
+	}
 
     //Movie Listing View
 	var MoviesView = Backbone.View.extend({
@@ -93,24 +89,29 @@ return c_value;
     			if (title == "" || summary == "" || img == "") {
     		           alert("Please provide complete data!");
     		    } else {
-    		           var formData = new FormData($("form[name='movie']")[0]);
+    		    	   $("#submit-btn").text("Creating...").attr('disabled', 'disabled');
+    		           var formData = new FormData($("#new_movie_form")[0]);
     		           formData.append("access_token", token)
     		           $.ajax({
-    		               url: "http://cs3213.herokuapp.com/movies.json",
-    		               type: "post",
-    		               data: formData,
-    		               cache: false,
-    		               contentType: false,
-    		               processData: false,
-    		               success: function(data) {
-    		               		console.log("success!");
-    		                   window.location.href = "/#movies/" + data.id;
-    		               }
+    		            	url: "http://cs3213.herokuapp.com/movies.json",
+    		            	type: "post",
+    		            	data: formData,
+    		            	cache: false,
+    		            	contentType: false,
+    		            	processData: false,
+    		            	error: function(jqXHR, textStatus, error) {
+                        	 	console.log(textStatus + ": " + error);
+                        	 	alert('Oops an error occurred.');
+                        	 	$("#submit-btn").text("Create").removeAttr("disabled"); 
+                      		}, 
+    		            	success: function(data) {
+    		            		console.log("success!");
+    		            		$("#submit-btn").text("Create").removeAttr("disabled");
+    		            	    window.location.href = "/#movies/" + data.id;
+    		            	}
     		         }); 
     		    }
-    		});
-
-            
+    		});    
             return this;
         },
     });
