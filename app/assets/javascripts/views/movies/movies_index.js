@@ -43,11 +43,20 @@
 	var SingleMovieView = Backbone.View.extend({        
  		el: "#single-movie-template",
 		//template: _.template($("#single-movie-template").html()),
-    render: function () {
-				var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+        render: function () {
+			var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
     	 	$('.testa').html(template);
-        //$("#app").html(template);
-        return this;
-    }
-  });
+            //$("#app").html(template);
+            return this;
+        }
+    });
+
+    var CreateMovieView = Backbone.View.extend({
+        el: '#add-movie-template',
+        render: function() {
+            var template = _.template($("#add-movie-template").html(), {});
+            $('.testa').html(template);
+            return this;
+        }
+    });
 
