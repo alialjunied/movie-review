@@ -10,8 +10,8 @@ var AppRouter = Backbone.Router.extend({
             
             //Actions to Movies
             //"delete_movie/:id"    : "delete_movie", 
-            "new_movie"        : "new_movie",
-            "edit_movie/:id"        : "update_movie",
+            "new_movie"       : "new_movie",
+            "edit/:id"        : "update_movie",
             "movie/:mid/review/delete/:rid" : "delete_review",
             "review/create/:movie_id"       : "create_review",
 
@@ -28,6 +28,7 @@ var AppRouter = Backbone.Router.extend({
 
 
       new_movie: function() {
+            console.log('direct to create movie view');
             AppViewInst.createMovieView();
       },
 

@@ -83,6 +83,7 @@ var SingleMovieView = Backbone.View.extend({
 		el: ".testa",
 		events : {
 		"click .submit": "sendReview",
+		"click #update_movie_btn": "update_movie",
 		"click #delete-movie-btn": "delete_movie",
 	},
 	sendReview: function () {
@@ -92,6 +93,10 @@ var SingleMovieView = Backbone.View.extend({
 	render: function () {
 		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
  		$('.testa').html(template);
+	},
+
+	update_movie: function() {
+		window.location.href = "/#edit/" + this.model.id;
 	},
 
 	delete_movie: function () {
@@ -126,7 +131,7 @@ var SingleMovieView = Backbone.View.extend({
 
 var UpdateMovieView = Backbone.View.extend({
 	render: function(){
-		
+
 		var template = _.template($("#update-movie-template").html(), {model: this.model.attributes});
 		$('.testa').html(template);
 
@@ -141,6 +146,7 @@ var UpdateMovieView = Backbone.View.extend({
  		var id = this.model.id;
 
  		$("#update-btn").click(function(){
+
 			var summary, title, img; 
 			title = $('#update_title').val();
 			summary = $('#update_summary').val();
@@ -149,12 +155,18 @@ var UpdateMovieView = Backbone.View.extend({
 			if (title == "" || summary == "") {
 		           alert("Please provide complete data!");
 		    } else {
+
 		    	   $("#update-btn").text("Updating...").attr('disabled', 'disabled');
-		           var formData = new FormData($("#update_movie_form")[0]);
-		           // formData.append('id', id);
-		           // formData.append('title', title);
-		           // formData.append('summary', title);
-		           
+		           var formData = new FormData();
+
+		           console.log('new: ' + id + ", " + title + ", " + summary);
+
+		           formData.append('id', id);
+		           formData.append('title', title);
+		           formData.append('summary', summary);
+		           if(img != "") {
+		           		formData.append('img', img);
+		           }
 		           formData.append("access_token", token);
 		           $.ajax({
 		            	url: "http://cs3213.herokuapp.com/movies/" + id + ".json",
@@ -170,8 +182,9 @@ var UpdateMovieView = Backbone.View.extend({
                   		}, 
 		            	success: function(data) {
 		            		console.log("success!");
-		            		$("#update-btn").text("Update").removeAttr("disabled");
-		            	    window.location.href = "/#movies/" + data.id;
+
+		            		//$("#update-btn").text("Update").removeAttr("disabled");
+		            	    // window.location.href = "/#movies/" + id;
 		            	}
 		         }); 
 		    }
@@ -181,6 +194,9 @@ var UpdateMovieView = Backbone.View.extend({
 
 var CreateMovieView = Backbone.View.extend({
     render: function() {
+
+    	console.log('create movie view');
+
         var template = _.template($("#add-movie-template").html(), {});
         $('.testa').html(template);
 

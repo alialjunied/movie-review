@@ -6,7 +6,8 @@ window.MovieReview = {
   initialize: function() {
   	window.AppRouterInst = new AppRouter();
   	window.AppViewInst = new AppView();
-    Backbone.history.start({ pushState: true} );
+    Backbone.history.start();
+    //{ pushState: true} 
   }
 };
 
