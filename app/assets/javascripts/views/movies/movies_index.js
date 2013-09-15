@@ -96,6 +96,12 @@ var SingleMovieView = Backbone.View.extend({
 	},
 
 	update_movie: function() {
+		var token = getCookie('token');
+		console.log(token);
+		if (token == "" || token == null) {
+			alert("Sadly you cannot update it before you sign in.");
+			return;
+		}
 		window.location.href = "/#edit/" + this.model.id;
 	},
 
@@ -103,9 +109,11 @@ var SingleMovieView = Backbone.View.extend({
 		var token = getCookie('token');
 		console.log(token);
 		if (token == "" || token == null) {
-			alert("Sadly you cannot before you sign in.");
+			alert("Sadly you cannot delete it before you sign in.");
 			return;
 		}
+
+		var id = this.model.id;
 
 		console.log(this.model.id);
 
@@ -118,7 +126,8 @@ var SingleMovieView = Backbone.View.extend({
         	 	console.log(textStatus + ": " + error);
         	 	//alert('Oops an error occurred.');
         	 	if (error == 'Unauthorized') {
-        	 		window.location.href = "/movies/sign_in"
+        	 		alert('This is not your movie!');
+        	 		window.location.href = "/#movies/" + id;
         	 	}
       		}, 
         	success: function(data) {
@@ -177,14 +186,17 @@ var UpdateMovieView = Backbone.View.extend({
 		            	processData: false,
 		            	error: function(jqXHR, textStatus, error) {
                     	 	console.log(textStatus + ": " + error);
-                    	 	alert('Oops an error occurred.');
+                    	 	if (error == 'Unauthorized') {
+                    	 		alert('This is not your movie!');	                  
+                    	 	}
                     	 	$("#update-btn").text("Update").removeAttr("disabled"); 
+                    	 	window.location.href = '/#movies/' + id;
                   		}, 
 		            	success: function(data) {
 		            		console.log("success!");
 
-		            		//$("#update-btn").text("Update").removeAttr("disabled");
-		            	    // window.location.href = "/#movies/" + id;
+		            		$("#update-btn").text("Update").removeAttr("disabled");
+		            	    window.location.href = "/#movies/" + id;
 		            	}
 		         }); 
 		    }
@@ -229,7 +241,8 @@ var CreateMovieView = Backbone.View.extend({
 		            	processData: false,
 		            	error: function(jqXHR, textStatus, error) {
                     	 	console.log(textStatus + ": " + error);
-                    	 	alert('Oops an error occurred.');
+                    	 	alert('Your authentication has expired.');
+                    	 	window.location.href = '/';
                     	 	$("#submit-btn").text("Create").removeAttr("disabled"); 
                   		}, 
 		            	success: function(data) {
