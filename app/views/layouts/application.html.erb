@@ -31,12 +31,15 @@
                 
                 <div class="container nav-collapse">
                     <ul class="nav pull-right">     
-                        <li><%= token = cookies['token']
-                                if token == nil 
+                        <li><%= if cookies['token'] == nil
                                     link_to"Sign in", :action => "sign_in"
+                                 #   redirect_to 'http://google.com'
                                 else
                                     link_to"Sign out", :action => "sign_out"
-                                end %></li>
+                                end 
+                                #if cookies['token'] == nil
+
+                                %></li>
                     </ul>                        
                 </div>
             </div>
@@ -54,13 +57,13 @@
         <div class="container">
             <div class="row">
                 <div class="span4">
-
-                    <img src={{= model.img_url }} class="img-circle">
-                    
+                    <img src={{= model.img_url }} class="img-circle" id="single-movie-img"> 
                 </div>
                 <div class="span6">
                     <h1>{{= model.title }}</h1>
                     <p>{{= model.summary }}</p>
+                    <button id="update-movie-btn" type="button" class="btn btn-success" >Update</button>
+                    <button id="delete-movie-btn" type="button" class="btn btn-danger" >Delete</button>
                 </div>  
             </div>
             {{= console.log(model.reviews) }}
@@ -100,14 +103,14 @@
     </script>
 
 
-<script type="text/template" id="movie-template">
-    <div class='movie-view' id={{= model.id}}>
-        <h3 class='movie-title'>
-            {{=model.title}}
-        </h3>
-        <img alt='A' src={{= model.img_url }} class="img-circle">
-    </div>
-</script>
+    <script type="text/template" id="movie-template">
+        <div class='movie-view' id={{= model.id}}>
+            <h3 class='movie-title'>
+                {{=model.title}}
+            </h3>
+            <img alt='A' src={{= model.img_url }} class="img-circle">
+        </div>
+    </script>
 
     <script type="text/template" id="add-movie-template">
         <div>
@@ -142,11 +145,45 @@
         </div>
     </script>
 
+    <script type="text/template" id="update-movie-template">
+        <div class="container">
+            <h3>Edit</h3>
+            <div class="row">
+                <form class="span4" enctype="multipart/form-data" id="update_movie_form" name="movie" method="POST" >
+                    <div class="control-group">
+                        <label class="control-label" for="movie_title">Title</label>
+                        <div class="controls">
+                        <input id="update_title" class="text_field" size=50 name="movie[title]" type="text" required="true" value={{= model.title }}>
+                        </div>
+                    </div>
+                
+                    <div class="control-group">
+                        <label class="control-label" for="movie_summary">Summary</label>
+                        <div class="controls">
+                        <input id="update_summary" class="text_field" size=500 name="movie[summary]" type="text" required="true" value={{= model.title}}>
+                        </div>
+                    </div>
+    
+                    <div class="control-group">
+                        <label class="control-label" for="movie_img">Image</label>
+                        <div class="controls">
+                            <input name="movie[img]" type="file">
+                        </div>
+                    </div>
+                
+                    <a id="update-btn" href={{="/#edit_movie/"+model.id}}>Update</a>
+                    <a id="cancel-btn" href={{="/#movies/"+model.id}}>Cancel</a>
+                </form>
+                <div class="span4">
+                    <img src={{= model.img_url }} class="img-circle" id="single-movie-img"> 
+                </div>
+            </div>
+        </div>
+    </script>
 
     <footer style="text-align: center">
         <p>&copy; Merb 2013</p>
     </footer>
 
   </body>
-
 </html>

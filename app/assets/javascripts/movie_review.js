@@ -11,7 +11,6 @@ window.MovieReview = {
 };
 
 $(document).ready(function() {
-	
   	return MovieReview.initialize();
 });
 

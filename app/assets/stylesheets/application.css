@@ -11,12 +11,10 @@
  *= require_self
  *= require_tree .
  */
- .movie-title {
+.movie-title {
   font-size: 1.2em !important;
 }
-.single-movie {
-  margin-top: 100px;
-}
+
 div.movie-view {
   
   float: left;
