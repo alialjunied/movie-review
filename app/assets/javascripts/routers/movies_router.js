@@ -35,7 +35,7 @@ var AppRouter = Backbone.Router.extend({
 
       create_movie: function() {
           AppViewInst.createMovieView();
-      }
+      },
 
 });
 

@@ -70,27 +70,7 @@
 			//return template;
 		}
 	});
-	function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-	/*
-function getCookie(name) {
-	console.log(document.cookie);
-  var parts = document.cookie.split(name + "=");
-  if (parts.length == 2) return parts.pop().split(";").shift();
-}*/
+
 	//----- Detailed Single Movie View
 	var SingleMovieView = Backbone.View.extend({        
  		el: ".testa",
@@ -100,11 +80,11 @@ function getCookie(name) {
 		sendReview: function () {
 			console.log("asdad");
 		},
-    render: function () {
-		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
-	 	$('.testa').html(template);
-    }
-  });
+    	render: function () {
+			var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+	 		$('.testa').html(template);
+    	}
+ 	});
 
     var CreateMovieView = Backbone.View.extend({
         render: function() {
