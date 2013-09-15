@@ -76,8 +76,6 @@ return c_value;
     });
 
     var CreateMovieView = Backbone.View.extend({
-        //el: '#add-movie-template',
-   
         render: function() {
             var template = _.template($("#add-movie-template").html(), {});
             $('.testa').html(template);
