@@ -34,6 +34,6 @@ var AppRouter = Backbone.Router.extend({
 
       update_movie: function(movie_id) {
             AppViewInst.updateMovieView(movie_id);
-      },
+      }
 });
 

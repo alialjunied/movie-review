@@ -84,7 +84,7 @@ var SingleMovieView = Backbone.View.extend({
 		events : {
 		"click .submit": "sendReview",
 		"click #update_movie_btn": "update_movie",
-		"click #delete-movie-btn": "delete_movie",
+		"click #delete-movie-btn": "delete_movie"
 	},
 	sendReview: function () {
 		console.log("asdad");
