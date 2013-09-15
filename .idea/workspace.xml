@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c053a0a-5006-4618-a1c3-9af044243742" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/movie_review.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/movie_review.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js" />
-    </list>
+    <list default="true" id="5c053a0a-5006-4618-a1c3-9af044243742" name="Default" comment="" />
     <ignored path="movie-review.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379254528666" ignored="false" />
@@ -35,10 +30,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="movies_index.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="movies_index.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="29" selection-start="1104" selection-end="1105" vertical-scroll-proportion="0.33333334">
+            <state line="44" column="29" selection-start="1104" selection-end="1105" vertical-scroll-proportion="0.07692308">
               <folding />
             </state>
           </provider>
@@ -53,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="38" selection-start="2480" selection-end="2480" vertical-scroll-proportion="2.0416667">
+            <state line="67" column="38" selection-start="2480" selection-end="2480" vertical-scroll-proportion="0.30865923">
               <folding />
             </state>
           </provider>
@@ -752,6 +747,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="29" selection-start="1104" selection-end="1105" vertical-scroll-proportion="0.07692308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="12" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
@@ -761,14 +763,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="38" selection-start="2480" selection-end="2480" vertical-scroll-proportion="2.0416667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="29" selection-start="1104" selection-end="1105" vertical-scroll-proportion="0.33333334">
+        <state line="67" column="38" selection-start="2480" selection-end="2480" vertical-scroll-proportion="0.30865923">
           <folding />
         </state>
       </provider>
