@@ -51,7 +51,7 @@
 
                 <div class="container nav-collapse">
                     <ul class="nav pull-right">     
-                        <li><%= token = session['token']
+                        <li><%= token = cookies['token']
                                 if token == nil 
                                     link_to"Sign in", :action => "sign_in"
                                 else
@@ -109,7 +109,7 @@
 
         <div><h3>Create new movie</h3>
 
-        <form name="movie" method="POST" >
+        <form name="movie" method="POST" action="http://cs3213.herokuapp.com/movies.json">
           <div class="control-group">
             <label class="control-label" for="movie_title">Title</label>
             <div class="controls">

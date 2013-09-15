@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
   end
 
   def sign_out
-  	session['token'] = nil
+    cookies['token'] = nil
   	redirect_to :action => 'index'
   end
 
@@ -58,8 +58,8 @@ class MoviesController < ApplicationController
      	  refresh_token = data['refresh_token']	
      	  @res = token.html_safe	
      	  # store in session
-     	  session[:token] = token
-     	  session[:refresh_token] = refresh_token	
+        cookies[:token] = token
+        cookies[:refresh_token] = refresh_token
      	  # redirect to home page
      	  redirect_to :action => 'index'
      	end	
