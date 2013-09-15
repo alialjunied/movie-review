@@ -4,6 +4,7 @@
     	evaluate: /\{\{(.+?)\}\}/g,
     };
 
+    //Movie Listing View
 	var MoviesView = Backbone.View.extend({
 		el : ".movies", //the DOM Element class 'movies'
 		addOne : function(model){ //function called addOne takes in a model
@@ -17,9 +18,8 @@
 			$('ul.movies').append(e1);
 		}
 	});
-	//----------
-	//VIEW
 
+	//Single Line Movie View in List
 	var MovieView = Backbone.View.extend({
 
 		tagName: "li", //insert into <ul> tag
@@ -27,18 +27,13 @@
 			"click" : "showMovie"
 		},
 		showMovie : function(){
-			//TODO: show movie detials
-			//$(".movies").html("<h1>sadd</h1>");
+			AppRouter.show_movie(this.model.get("id"));
+			/*
 			movie = new Movie();
-			//var id = this.id;
-			//console.log(movie.get("id"));
-			//var id = this.model.get("id");
-	
       		var view = new SingleMovieView({model: this.model});
-
-			//var template = _.template($('#single-movie-template').html(), {model: this.model.toJSON()});
       		view.render();
-     		return this;	
+     		return this;
+     		*/
 
 		},
 		render: function(){ //how to insert into <ul> tag
@@ -49,14 +44,15 @@
 		}
 	});
 
+	//----- Detailed Single Movie View
+
 	 var SingleMovieView = Backbone.View.extend({        
- 	el: "#single-movie-template",
+ 		el: "#single-movie-template",
 		//template: _.template($("#single-movie-template").html()),
         render: function () {
-        		console.log(this.model.get("title"));
-        		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+        	console.log(this.model.get("title"));
+        	var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
             $('#app').html(template);
-            //$("#app").html(template);
             return this;
         }
     });

@@ -1,16 +1,11 @@
 //backbone to model client-side
 	//MODEL
-	Movie = Backbone.Model.extend({ 
-		url : function(){
-			return "http://cs3213.herokuapp.com/movies/" + this.get('id') + ".json"
-		}
-	});
-
-	var movie = new Movie();
-	movie.url = "http://cs3213.herokuapp.com/movies/4.json"
-
-	movie.fetch({
-		success : function( ){
-			console.log(movie.get("title"));
+	var Movie = Backbone.Model.extend({ 
+		//set root url to get info
+		urlRoot: "http://cs3213.herokuapp.com/movies/",
+		//load its reviews when created
+		initialize: function(){
+			this.reviews = new Reviews;
+			this.reviews.url = "http://cs3213.herokuapp.com/movies/" + this.id.toString() + "/reviews.json"
 		}
 	});
