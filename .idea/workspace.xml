@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c053a0a-5006-4618-a1c3-9af044243742" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/app/app_view.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/app/app_view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/movies/index.html.erb" afterPath="$PROJECT_DIR$/app/views/movies/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/movie_review.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/movie_review.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/movies_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/movies_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js" />
     </list>
@@ -17,7 +11,7 @@
     <file path="/movies_controller.rb" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379233755117" ignored="false" />
     <file path="/index.html.erb" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379228981199" ignored="false" />
     <file path="/application.html.erb" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379233797963" ignored="false" />
-    <file path="/movies_index.js" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379238358574" ignored="false" />
+    <file path="/movies_index.js" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379254965899" ignored="false" />
     <file path="/app_view.js" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379229693096" ignored="false" />
     <file path="/movies_router.js" changelist="5c053a0a-5006-4618-a1c3-9af044243742" time="1379229783682" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,7 +36,16 @@
       <file leaf-file-name="movies_index.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="19" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.2716216">
+            <state line="129" column="59" selection-start="3517" selection-end="3539" vertical-scroll-proportion="2.0140057">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movies_router.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="12" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -51,7 +54,7 @@
       <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="70" selection-start="5218" selection-end="5218" vertical-scroll-proportion="0.0">
+            <state line="67" column="38" selection-start="2480" selection-end="2480" vertical-scroll-proportion="2.0416667">
               <folding />
             </state>
           </provider>
@@ -76,11 +79,11 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/app/app_view.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js" />
         <option value="$PROJECT_DIR$/app/controllers/movies_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/movies/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js" />
       </list>
     </option>
   </component>
@@ -675,7 +678,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/movies_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="11" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0" />
+        <state line="21" column="11" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js">
@@ -702,7 +707,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/movies/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="54" selection-end="54" vertical-scroll-proportion="0.04249292" />
+        <state line="2" column="17" selection-start="54" selection-end="54" vertical-scroll-proportion="0.04249292">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/movies/signup.html.erb">
@@ -724,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="13" selection-start="817" selection-end="817" vertical-scroll-proportion="0.57768923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -738,24 +738,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/movies_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="26" selection-start="467" selection-end="467" vertical-scroll-proportion="0.4054054" />
+        <state line="21" column="26" selection-start="467" selection-end="467" vertical-scroll-proportion="0.4054054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/movies_router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="12" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="70" selection-start="5218" selection-end="5218" vertical-scroll-proportion="0.0">
+        <state line="67" column="38" selection-start="2480" selection-end="2480" vertical-scroll-proportion="2.0416667">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/movies/movies_index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="19" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.2716216">
+        <state line="129" column="59" selection-start="3517" selection-end="3539" vertical-scroll-proportion="2.0140057">
           <folding />
         </state>
       </provider>

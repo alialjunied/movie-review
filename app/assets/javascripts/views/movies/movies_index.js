@@ -83,7 +83,7 @@ var SingleMovieView = Backbone.View.extend({
 		el: ".testa",
 		events : {
 		"click .submit": "sendReview",
-		"click #delete-movie-btn": "delete_movie",
+		"click #delete-movie-btn": "delete_movie"
 	},
 	sendReview: function () {
 		console.log("asdad");
@@ -113,7 +113,7 @@ var SingleMovieView = Backbone.View.extend({
         	 	console.log(textStatus + ": " + error);
         	 	//alert('Oops an error occurred.');
         	 	if (error == 'Unauthorized') {
-        	 		window.location.href = "/movies/sign_in"
+        	 		alert('This is not your movie!');
         	 	}
       		}, 
         	success: function(data) {
