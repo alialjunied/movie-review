@@ -1,4 +1,4 @@
-var AppViewInst = new AppView();
+//var AppViewInst = new AppView();
 
 var AppRouter = Backbone.Router.extend({
       // URL_Fragments : Method_Names
@@ -18,15 +18,18 @@ var AppRouter = Backbone.Router.extend({
             "logout"           : "logout",
         },
 
+
+
       index: function() {
             AppViewInst.showPage(1);
       },
 
+
       show_Single_Movie : function (movie_id){
             //get movie info from API Server
-            var movie = new Movie({movie_id: movie_id + ".json"});
-            AppView.showSingleMovieView(movie_id, movie);
-      }
+
+            AppViewInst.showSingleMovieView(movie_id);
+      },
 
 });
 

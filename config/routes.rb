@@ -1,5 +1,4 @@
 MovieReview::Application.routes.draw do
-  resources :movies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,7 +6,12 @@ MovieReview::Application.routes.draw do
   root to: 'movies#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  match '/' => 'movies#index', :via => [:get, :post]
+  match '/movies/index' => 'movies#index', :via => [:get, :post]
+  match '/movies/sign_in' => 'movies#sign_in', :via => [:get, :post]
+  match '/movies/sign_out' => 'movies#sign_out', :via => [:get, :post]
+  match '/movies/access_token' => 'movies#access_token', :via => [:get, :post]
+  match '/client' => 'client#index', :via => [:get, :post]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

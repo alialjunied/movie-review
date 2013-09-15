@@ -1,11 +1,18 @@
 //backbone to model client-side
-	//MODEL
+	var Review = Backbone.Model.extend({ 
+
+	});
+
+	var ReviewList = Backbone.Collection.extend({
+		model: Review
+	});
+
 	var Movie = Backbone.Model.extend({ 
-		//set root url to get info
-		urlRoot: "http://cs3213.herokuapp.com/movies/",
-		//load its reviews when created
-		initialize: function(){
-			this.reviews = new Reviews;
-			this.reviews.url = "http://cs3213.herokuapp.com/movies/" + this.id.toString() + "/reviews.json"
+		url : function(){
+			return "http://cs3213.herokuapp.com/movies/" + this.get('id') + ".json"
+		},
+		initialize: function() {
+		    this.reviews = new ReviewList();
+    		this.reviews.url = "http://cs3213.herokuapp.com/movies/" + this.attributes.id + "/reviews.json";
 		}
 	});

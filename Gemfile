@@ -32,7 +32,10 @@ gem 'therubyracer'
 
 gem 'twitter-bootstrap-rails'
 
-gem 'oauth2', '~> 0.9.2'
+gem 'oauth2', '>= 0.1.1'
+
+gem 'sinatra', '>= 0.0.0'
+
 group :assets do
   gem 'less'
 end

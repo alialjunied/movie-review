@@ -4,15 +4,16 @@ window.MovieReview = {
   Views: {},
   Routers: {},
   initialize: function() {
-      var AppRouterInst = new AppRouter();
-      Backbone.history.start();
+  	window.AppRouterInst = new AppRouter();
+  	window.AppViewInst = new AppView();
+    Backbone.history.start( );
   }
 };
 
 $(document).ready(function() {
-  return MovieReview.initialize();
+	
+  	return MovieReview.initialize();
 });
-
 
 
  

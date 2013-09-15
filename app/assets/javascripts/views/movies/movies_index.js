@@ -11,48 +11,43 @@
 			
 			view = new MovieView({ model : model }); //create a MovieView object specifying the model
 
-			e1 = view.render()
-			var img = $('<img/>').attr({ 'src' : model.get('img_url') })
-			$(e1).append(img);
+			e1 = view.render();
+			//var img = $('<img/>').attr({ 'src' : model.get('img_url') })
+			//$(e1).append(img);
 
-			$('ul.movies').append(e1);
+			$('div.movies').append(e1);
 		}
 	});
 
 	//Single Line Movie View in List
 	var MovieView = Backbone.View.extend({
-
-		tagName: "li", //insert into <ul> tag
+		tagName: "div", //insert into <ul> tag
 		events : {
 			"click" : "showMovie"
 		},
 		showMovie : function(){
-			AppRouter.show_movie(this.model.get("id"));
-			/*
-			movie = new Movie();
-      		var view = new SingleMovieView({model: this.model});
-      		view.render();
-     		return this;
-     		*/
-
+			AppRouterInst.navigate('/movies/' + this.model.id, true);
+			//AppRouter.show_Single_Movie(this.model.id);
 		},
 		render: function(){ //how to insert into <ul> tag
 			$(this.el).attr("id",this.model.id);
+			console.log(this.model);
 			$(this.el).attr("class","test");
-			return $(this.el).text( this.model.get('title') ); //pass in model in new MovieView({ model : model}), we have access to this.model
-			
+			//return $(this.el).text( this.model.get('title') ); //pass in model in new MovieView({ model : model}), we have access to this.model
+			return $(this.el).html(
+				"<div class='span3 movie'><h3 class='movie-title'>"+ this.model.get("title") +"</h3><img alt='A' src='"+ this.model.get("img_url") +"'></div>" );
 		}
 	});
 
 	//----- Detailed Single Movie View
-
-	 var SingleMovieView = Backbone.View.extend({        
+	var SingleMovieView = Backbone.View.extend({        
  		el: "#single-movie-template",
 		//template: _.template($("#single-movie-template").html()),
-        render: function () {
-        	console.log(this.model.get("title"));
-        	var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
-            $('#app').html(template);
-            return this;
-        }
-    });
+    render: function () {
+				var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+    	 	$('.testa').html(template);
+        //$("#app").html(template);
+        return this;
+    }
+  });
+
