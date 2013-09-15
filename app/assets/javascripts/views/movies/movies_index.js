@@ -78,8 +78,6 @@ function getCookie(name) {
 			console.log("asdad");
 		},
 
-
-
     render: function (movie_id) {	
 			var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
 		 	$('.testa').html(template);
@@ -90,7 +88,7 @@ function getCookie(name) {
 					console.log(movie_id);
 					console.log(review_id);
 					console.log(token);
-		 	 		var url = "http://cs3213.herokuapp.com/movies/" + movie_id + ".json/reviews/" + review_id + ".json";
+		 	 		var url = "http://cs3213.herokuapp.com/movies/" + movie_id + "/reviews/" + review_id + ".json";
 
 			    $.ajax({
 			    	type: "delete",
@@ -147,9 +145,11 @@ function getCookie(name) {
 		var token = getCookie('token');
 		console.log(token);
 		if (token == "" || token == null) {
-			alert("Sadly you cannot before you sign in.");
+			alert("Sadly you cannot delete it before you sign in.");
 			return;
 		}
+
+		var id = this.model.id;
 
 		console.log(this.model.id);
 
@@ -163,6 +163,7 @@ function getCookie(name) {
         	 	//alert('Oops an error occurred.');
         	 	if (error == 'Unauthorized') {
         	 		alert('This is not your movie!');
+        	 		window.location.href = "/#movies/" + id;
         	 	}
       		}, 
         	success: function(data) {
@@ -225,14 +226,17 @@ var UpdateMovieView = Backbone.View.extend({
 		            	processData: false,
 		            	error: function(jqXHR, textStatus, error) {
                     	 	console.log(textStatus + ": " + error);
-                    	 	alert('Oops an error occurred.');
+                    	 	if (error == 'Unauthorized') {
+                    	 		alert('This is not your movie!');	                  
+                    	 	}
                     	 	$("#update-btn").text("Update").removeAttr("disabled"); 
+                    	 	window.location.href = '/#movies/' + id;
                   		}, 
 		            	success: function(data) {
 		            		console.log("success!");
 
-		            		//$("#update-btn").text("Update").removeAttr("disabled");
-		            	    // window.location.href = "/#movies/" + id;
+		            		$("#update-btn").text("Update").removeAttr("disabled");
+		            	    window.location.href = "/#movies/" + id;
 		            	}
 		         }); 
 		    }
@@ -255,33 +259,35 @@ var UpdateMovieView = Backbone.View.extend({
     			summary = $('#movie_summary').val();
     			img = $('#movie_img').val();
 	
-    			if (title == "" || summary == "" || img == "") {
-    		           alert("Please provide complete data!");
-    		    } else {
-    		    	   $("#submit-btn").text("Creating...").attr('disabled', 'disabled');
-    		           var formData = new FormData($("#new_movie_form")[0]);
-    		           formData.append("access_token", token)
-    		           $.ajax({
-    		            	url: "http://cs3213.herokuapp.com/movies.json",
-    		            	type: "post",
-    		            	data: formData,
-    		            	cache: false,
-    		            	contentType: false,
-    		            	processData: false,
-    		            	error: function(jqXHR, textStatus, error) {
-                        	 	console.log(textStatus + ": " + error);
-                        	 	alert('Oops an error occurred.');
-                        	 	$("#submit-btn").text("Create").removeAttr("disabled"); 
-                      		}, 
-    		            	success: function(data) {
-    		            		console.log("success!");
-    		            		$("#submit-btn").text("Create").removeAttr("disabled");
-    		            	    window.location.href = "/#movies/" + data.id;
-    		            	}
-    		         }); 
-    		    }
-    		});    
-            return this;
-        },
-    });
+    			
+					if (title == "" || summary == "" || img == "") {
+				           alert("Please provide complete data!");
+				    } else {
+				    	   $("#submit-btn").text("Creating...").attr('disabled', 'disabled');
+				           var formData = new FormData($("#new_movie_form")[0]);
+				           formData.append("access_token", token)
+				           $.ajax({
+				            	url: "http://cs3213.herokuapp.com/movies.json",
+				            	type: "post",
+				            	data: formData,
+				            	cache: false,
+				            	contentType: false,
+				            	processData: false,
+				            	error: function(jqXHR, textStatus, error) {
+		                    	 	console.log(textStatus + ": " + error);
+		                    	 	alert('Your authentication has expired.');
+		                    	 	window.location.href = '/';
+		                    	 	$("#submit-btn").text("Create").removeAttr("disabled"); 
+		                  		}, 
+				            	success: function(data) {
+				            		console.log("success!");
+				            		$("#submit-btn").text("Create").removeAttr("disabled");
+				            	    window.location.href = "/#movies/" + data.id;
+				            	}
+				         }); 
+				    }
+				});    
+        return this;
+    },
+});
 
