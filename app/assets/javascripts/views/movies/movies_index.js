@@ -38,18 +38,44 @@
 				"<div class='span3 movie'><h3 class='movie-title'>"+ this.model.get("title") +"</h3><img alt='A' src='"+ this.model.get("img_url") +"'></div>" );
 		}
 	});
-
+	function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+	/*
+function getCookie(name) {
+	console.log(document.cookie);
+  var parts = document.cookie.split(name + "=");
+  if (parts.length == 2) return parts.pop().split(";").shift();
+}*/
 	//----- Detailed Single Movie View
 	var SingleMovieView = Backbone.View.extend({        
- 		el: "#single-movie-template",
-		//template: _.template($("#single-movie-template").html()),
-        render: function () {
-			var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
-    	 	$('.testa').html(template);
-            //$("#app").html(template);
-            return this;
-        }
-    });
+ 		el: ".testa",
+ 		events : {
+			"click .submit" : "sendReview"
+		},
+		sendReview: function () {
+			console.log("asdad");
+		},
+    render: function () {
+
+		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+	 	$('.testa').html(template);
+	 	
+		return this;
+    }
+  });
 
     var CreateMovieView = Backbone.View.extend({
         el: '#add-movie-template',

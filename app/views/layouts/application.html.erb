@@ -111,6 +111,7 @@
                     <label class="span3" for="review_comment">Comment</label>
                     <textarea class="span9" cols="40" id="review_comment" name="review[comment]" rows="3"></textarea>
                 </div>
+                <input name="commit" id="submit" type="submit" value="Create Review">
 
             </div>
 
@@ -119,7 +120,11 @@
     </script>
 
     <script type="text/template" id="add-movie-template">
-
+        <script type="text/javascript">
+        $("commit").click(function(){
+            console.log("kjknknkn");
+        });
+        </script>
         <div><h3>Create new movie</h3>
 
         <form name="movie" method="POST" action="http://cs3213.herokuapp.com/movies.json">
