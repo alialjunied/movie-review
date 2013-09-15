@@ -25,6 +25,12 @@ div.movie-view {
   float: left;
   padding-left: 10px;
 }
+div.row-movies {
+  
+  float: left;
+  padding-left: 10px;
+}
+
 #app ul.movies li {
     position: relative;
     padding: 0.5em;
