@@ -27,17 +27,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <%= link_to "MoviesApp", root_url, class: "brand" %>
+                 
+                
                 
                 <div class="container nav-collapse">
                     <ul class="nav pull-right">     
-                        <li><%= token = cookies['token']
+                        <li>
+                            <%= token = cookies['token']
                                 if token == nil 
                                     link_to"Sign in", :action => "sign_in"
                                 else
                                     link_to"Sign out", :action => "sign_out"
-                                end %></li>
+                                end
+                            %>
+                        </li>
                     </ul>                        
+                </div>
+                <div id="pagination" class="row-fluid">
+                    <%= link_to "MoviesApp", root_url, class: "brand" %>
+                    <a id="prevLink">Prev </a>
+                    <a id="nextLink">Next </a>
                 </div>
             </div>
         </div>

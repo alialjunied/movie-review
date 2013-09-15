@@ -5,13 +5,13 @@ var AppRouter = Backbone.Router.extend({
       routes: {
             //Display Page
             ""                 : "index",
-            "page/:page"       : "movies_pagination", 
-            "movies/:id"       : "show_Single_Movie",
+            "page/:page_num"       : "show_page", 
+            "movies/:id"       : "show_single_movie",
             
             //Actions to Movies
             "movie/update/:id" : "update_movie",
             "movie/delete/:id" : "delete_movie",
-            "new_movie"        : "new_movie",
+            "create_movie"        : "create_movie",
             "movie/:mid/review/delete/:rid" : "delete_review",
             "review/create/:movie_id"       : "create_review",
 
@@ -23,13 +23,17 @@ var AppRouter = Backbone.Router.extend({
             AppViewInst.showPage(1);
       },
 
+      show_page: function(page_num) {
+            AppViewInst.showPage(page_num);
+      },
 
-      show_Single_Movie : function (movie_id){
+
+      show_single_movie : function (movie_id){
             AppViewInst.showSingleMovieView(movie_id);
       },
 
 
-      new_movie: function() {
+      create_movie: function() {
           AppViewInst.createMovieView();
       }
 
