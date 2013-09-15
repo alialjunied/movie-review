@@ -64,7 +64,7 @@
     </div>
     
     <div id="content" class="container">
-        <div class="span9">
+        <div class="span9 testa">
             <%= yield %>    
         </div>        
     </div>
@@ -83,7 +83,7 @@
                     <p>{{= model.summary }}</p>
                 </div>  
             </div>
-            {{= console.log(movie.reviews) }}
+            {{= console.log(model.reviews) }}
             {{ _.each(model.reviews.toJSON(), function(review) { }}
             <div class="well comment">
                 <div class="row-fluid">

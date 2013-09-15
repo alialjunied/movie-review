@@ -1,14 +1,35 @@
+//var AppViewInst = new AppView();
+
 var AppRouter = Backbone.Router.extend({
-routes: {
-            "" : "index",
-            "page/:page" : "movies_pagination",
-            "movies/:id" : "view_movie",
-            "movie/delete/:id" : "delete_movie",
+      // URL_Fragments : Method_Names
+      routes: {
+            //Display Page
+            ""                 : "index",
+            "page/:page"       : "movies_pagination", 
+            "movies/:id"       : "show_Single_Movie",
+            
+            //Actions to Movies
             "movie/update/:id" : "update_movie",
-            "new_movie" : "new_movie",
+            "movie/delete/:id" : "delete_movie",
+            "new_movie"        : "new_movie",
             "movie/:mid/review/delete/:rid" : "delete_review",
-            "logout" : "logout",
-            "review/create/:movie_id" : "create_review",
+            "review/create/:movie_id"       : "create_review",
+
+            "logout"           : "logout",
         },
 
+
+
+      index: function() {
+            AppViewInst.showPage(1);
+      },
+
+
+      show_Single_Movie : function (movie_id){
+            //get movie info from API Server
+
+            AppViewInst.showSingleMovieView(movie_id);
+      },
+
 });
+

@@ -11,7 +11,7 @@ MovieReview::Application.routes.draw do
   match '/movies/sign_in' => 'movies#sign_in', :via => [:get, :post]
   match '/movies/sign_out' => 'movies#sign_out', :via => [:get, :post]
   match '/movies/access_token' => 'movies#access_token', :via => [:get, :post]
-  # match '/client' => 'client#index', :via => [:get, :post]
+  match '/client' => 'client#index', :via => [:get, :post]
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

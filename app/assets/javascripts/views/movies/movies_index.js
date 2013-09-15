@@ -4,6 +4,7 @@
     	evaluate: /\{\{(.+?)\}\}/g,
     };
 
+    //Movie Listing View
 	var MoviesView = Backbone.View.extend({
 		el : ".movies", //the DOM Element class 'movies'
 		addOne : function(model){ //function called addOne takes in a model
@@ -17,37 +18,16 @@
 			$('div.movies').append(e1);
 		}
 	});
-	//----------
-	//VIEW
 
+	//Single Line Movie View in List
 	var MovieView = Backbone.View.extend({
 		tagName: "div", //insert into <ul> tag
 		events : {
 			"click" : "showMovie"
 		},
 		showMovie : function(){
-			//TODO: show movie detials
-			
-			var id = this.model.id;
-			var movie = new Movie({id: id});
-			movie.url = "http://cs3213.herokuapp.com/movies/"+id+".json"
-
-			movie.fetch({
-				success : function(thisMovie){
-					thisMovie.reviews.fetch({
-						success: function(thisMovieReviews) {
-							thisMovie.set("reviews", thisMovieReviews);
-							var view = new SingleMovieView({model: movie});
-
-							//console.log(movie);
-							view.render();
-		     			return this;
-
-							}
-						});
-				}
-			//var template = _.template($('#single-movie-template').html(), {model: this.model.toJSON()});
-		});
+			AppRouterInst.navigate('/movies/' + this.model.id, true);
+			//AppRouter.show_Single_Movie(this.model.id);
 		},
 		render: function(){ //how to insert into <ul> tag
 			$(this.el).attr("id",this.model.id);
@@ -55,10 +35,11 @@
 			$(this.el).attr("class","test");
 			//return $(this.el).text( this.model.get('title') ); //pass in model in new MovieView({ model : model}), we have access to this.model
 			return $(this.el).html(
-				"<div class='span3 movie'><h3 class='movie-title'><a href='/movies/"+ this.model.id +"'>"+ this.model.get("title") +"</a></h3><a href='/movies/"+ this.model.id +"'><img alt='A' src='"+ this.model.get("img_url") +"'></a></div>" );
+				"<div class='span3 movie'><h3 class='movie-title'>"+ this.model.get("title") +"</h3><img alt='A' src='"+ this.model.get("img_url") +"'></div>" );
 		}
 	});
 
+	//----- Detailed Single Movie View
 	var SingleMovieView = Backbone.View.extend({        
  		el: "#single-movie-template",
 		//template: _.template($("#single-movie-template").html()),
@@ -69,3 +50,4 @@
         return this;
     }
   });
+
