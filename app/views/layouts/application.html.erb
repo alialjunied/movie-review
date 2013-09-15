@@ -45,7 +45,12 @@
             </div>
         </div>
     </div>
-    
+
+    <div id="pagination" class="row-fluid">
+        <a id="prevLink">Prev</a>
+        <a id="nextLink">Next</a>
+    </div>
+
     <div id="content" class="container">
         <div class="span9 testa">
             <%= yield %>    
@@ -101,8 +106,6 @@
         </div>
     </div>
     </script>
-
-
     <script type="text/template" id="movie-template">
         <div class='movie-view' id={{= model.id}}>
             <h3 class='movie-title'>
@@ -111,6 +114,7 @@
             <img alt='A' src={{= model.img_url }} class="img-circle">
         </div>
     </script>
+
 
     <script type="text/template" id="add-movie-template">
         <div>
