@@ -35,15 +35,17 @@
 			//var img = $('<img/>').attr({ 'src' : model.get('img_url') })
 			//$(e1).append(img);
 
-			$('div.row-movies').append(e1);
-		}
+			$('.row-movies').append(e1);
+		},
+
+
 	});
 
 	//Single Line Movie View in List
 	var MovieView = Backbone.View.extend({
 		tagName: "div", //insert into <ul> tag
 		//template: _.template($("#movie-template").html()),
-		//el: ".movie-view",
+		//el: "div",
 		events : {
 			"click" : "showMovie"
 		},
@@ -60,11 +62,12 @@
 			//	"<div class='span3 movie'><h3 class='movie-title'>"+ this.model.get("title") +"</h3><img alt='A' src='"+ this.model.get("img_url") +"'></div>" );
 			//$(this.el.movie).attr("id",this.model.id);
 			//$(this.movie).attr("class","test");
-			$('this.el').attr("id",this.model.id);
-			$('this.el').attr("class","test");
+			$(this.el).attr("id",this.model.id);
+			$(this.el).attr("class","movie-view");
 			var template = _.template($("#movie-template").html(), {model: this.model.toJSON()} );
 			//return $(".row-movies").html(template);
 			return $(this.el).html(template);
+			//return template;
 		}
 	});
 	function getCookie(name) {

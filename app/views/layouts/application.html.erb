@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                 </a>
                  
-                
+                <%= link_to "MoviesApp", root_url, class: "brand" %>
                 
                 <div class="container nav-collapse">
                     <ul class="nav pull-right">     
@@ -43,18 +43,13 @@
                         </li>
                     </ul>                        
                 </div>
-                <div id="pagination" class="row-fluid">
-                    <%= link_to "MoviesApp", root_url, class: "brand" %>
-                    <a id="prevLink">Prev </a>
-                    <a id="nextLink">Next </a>
-                </div>
             </div>
         </div>
     </div>
 
     <div id="pagination" class="row-fluid">
-        <a id="prevLink">Prev</a>
-        <a id="nextLink">Next</a>
+        <a id="prevPage">Prev</a>
+        <a id="nextPage">Next</a>
     </div>
 
     <div id="content" class="container">
@@ -115,12 +110,13 @@
 
 
 <script type="text/template" id="movie-template">
-    <div class='movie-view' id={{= model.id}}>
+    
         <h3 class='movie-title'>
             {{=model.title}}
         </h3>
         <img alt='A' src={{= model.img_url }} class="img-circle">
-    </div>
+        <!--div class='movie-view' id={{= model.id}}-->
+        <!--/div-->
 </script>
 
     <script type="text/template" id="add-movie-template">
