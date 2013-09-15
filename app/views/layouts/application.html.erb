@@ -109,29 +109,29 @@
 
         <div><h3>Create new movie</h3>
 
-        <form name="movie" method="POST" >
+        <form enctype="multipart/form-data" id="new_movie_form" name="movie" method="POST" >
           <div class="control-group">
             <label class="control-label" for="movie_title">Title</label>
             <div class="controls">
-              <input class="text_field" id="movie_title" name="movie[title]" size="30" type="text" required="true">
+              <input class="text_field" id="movie_title" name="movie[Title]" size="30" type="text" required="true">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="movie_summary">Summary</label>
             <div class="controls">
-              <input class="text_field" id="movie_summary" name="movie[summary]" size="30" type="text" required="true">
+              <input class="text_field" id="movie_summary" name="movie[Summary]" size="30" type="text" required="true">
             </div>
           </div>
 
           <div class="control-group">
             <label class="control-label" for="movie_img">Img</label>
             <div class="controls">
-              <input id="movie_img" name="movie[img]" type="file" required="true">
+              <input id="movie_img" name="movie[Image]" type="file" required="true">
             </div>
           </div>
 
-          <a class="btn btn-primary" id="submit">Create Movie</a>
-          <a href="#" id="cancel" class="btn">Cancel</a>
+          <a class="btn btn-primary" id="submit-btn">Create Movie</a>
+          <a href="/" id="cancel" class="btn">Cancel</a>
         </form>
         </div>
 

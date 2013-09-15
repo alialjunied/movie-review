@@ -37,8 +37,8 @@ var AppView = Backbone.View.extend({
       },
 
 	createMovieView: function(){
-        var view = new CreateMovieView();
-        view.render();
+            var view = new CreateMovieView();
+            view.render();
 	},
 
 	updateMovieView: function(){
