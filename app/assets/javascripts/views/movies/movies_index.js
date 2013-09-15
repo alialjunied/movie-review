@@ -88,11 +88,39 @@ function getCookie(name) {
 		sendReview: function () {
 			console.log("asdad");
 		},
-    render: function () {
+    render: function (movie_id) {	
+			var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
+		 	$('.testa').html(template);
+		 	$('#submit').click(function(){
 
-		var template = _.template($("#single-movie-template").html(), {model: this.model.toJSON()});
-	 	$('.testa').html(template);
-	 	
+	 		var token = getCookie("token");
+	 		var score = $.trim($("#review_score").val());
+	 		var comment = $.trim($("#review_comment").val());
+	 		if(score < 1 || score > 100) {
+				alert("Please enter a score between 1 and 100");
+        return;
+			}
+			var data = {
+	      'movie_id': movie_id,
+	      'score': score,
+	      'comment': comment,
+	      'access_token': token
+	    };
+	    var url = "http://cs3213.herokuapp.com/movies/" + movie_id + "/reviews.json";
+	    $.ajax({
+	        url: url,
+	        type: "POST",
+	        dataType: "json",
+	        headers: {'Content-Type':'application/json'},
+	        data: JSON.stringify(data),
+	        success: function(result) {
+	            window.location.href = "/#movies/"+ movie_id;
+	        },
+	        error: function (xhr, status, err) {
+	            console.log(xhr);
+	        }
+	    });
+	 	});
 		return this;
     }
   });

@@ -28,7 +28,7 @@ var AppView = Backbone.View.extend({
                               success: function(thisMovieReviews) {
                                     thisMovie.set("reviews", thisMovieReviews);
                                     var view = new SingleMovieView({model: movie});
-                                    view.render();
+                                    view.render(movie.id);
                                     return this;
                               }
                         });
