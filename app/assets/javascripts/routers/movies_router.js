@@ -5,6 +5,7 @@ var AppRouter = Backbone.Router.extend({
       routes: {
             //Display Page
             ""                 : "index",
+            "#/"               : "index",
             "page/:page_num"       : "show_page", 
             "movies/:id"       : "show_single_movie",
             

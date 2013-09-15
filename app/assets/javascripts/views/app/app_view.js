@@ -4,7 +4,7 @@ var AppView = Backbone.View.extend({
 	//el: set element of main div changing
 
 	showPage: function(pageNum){
-            console.log(pageNum);
+            $('#pagination').show();
             $("div.row-movies").empty();
            //movies.url = movies.url + "?" + $.param({page: pageNum});
 
@@ -38,7 +38,7 @@ var AppView = Backbone.View.extend({
 	},
 
 	showSingleMovieView: function(movie_id){
-            
+            $('#pagination').hide();
             var movie = new Movie({id: movie_id});
             movie.url = "http://cs3213.herokuapp.com/movies/"+movie_id+".json"
 
@@ -57,11 +57,13 @@ var AppView = Backbone.View.extend({
       },
 
 	createMovieView: function(){
+            $('#pagination').hide();
             var view = new CreateMovieView();
             view.render();
 	},
 
       updateMovieView: function(movie_id){
+            $('#pagination').hide();
             var movie = new Movie({id: movie_id});
             movie.url = "http://cs3213.herokuapp.com/movies/"+movie_id+".json"
 
