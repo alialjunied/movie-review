@@ -1,16 +1,15 @@
-//--Movies Collection
-	var Movies = Backbone.Collection.extend({
-		model : Movie, //the collection is a collection of the model Movie
-		url : "http://cs3213.herokuapp.com/movies.json",
+var Movies = Backbone.Collection.extend({
+	model : Movie,
+	url : "http://cs3213.herokuapp.com/movies.json",
 
-		pagination : function(page) {
-			this.url = url + page.toString();
-	       page = page-1;
-	       var collection = this;
-	       collection = _(collection.rest(perPage*page));
-	       collection = _(collection.first(perPage));    
-	       return collection.map( function(model) { return model.toJSON() } ); 
-    	}
-	});
-	
+	pagination : function(page) {
+		this.url = url + page.toString();
+       	page = page-1;
+       	var collection = this;
+       	collection = _(collection.rest(perPage*page));
+       	collection = _(collection.first(perPage));    
+       	return collection.map( function(model) { return model.toJSON() } ); 
+	}
+});
+
 	
